@@ -1,0 +1,418 @@
+/* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    line-height: 1.6;
+}
+
+/* Navigation */
+header {
+    background-color: #1F1F1F;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #03dac55d;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #E0E0E0;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #BB86FC;
+    transform: scale(1.1);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #BB86FC;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #181818;
+}
+
+.hero .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: #BB86FC;
+}
+
+.social-links a {
+    color: #03DAC6;
+    margin: 0 1rem;
+    font-size: 2.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.social-links a:hover {
+    color: #c918ff;
+    transform: scale(1.2);
+}
+
+/* Projects Section */
+.projects {
+    background-color: #1F1F1F;
+    padding: 3rem 2rem;
+}
+
+.projects .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-card {
+    background-color: #242424;
+    padding: 1.5rem;
+    margin: 1rem;
+    width: 280px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6);
+}
+
+.project-card h3 {
+    color: #BB86FC;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    margin-bottom: 1rem;
+    color: #E0E0E0;
+}
+
+.project-card a {
+    color: #03DAC6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project-card a:hover {
+    color: #18FFFF;
+}
+
+.project-button {
+    display: inline-block; /* Para que el botón se comporte como un bloque en línea */
+    background-color: #c918ff; /* Color de fondo del botón */
+    color: #FFFFFF; /* Color del texto */
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+    margin-top: 1rem; /* Añade un margen superior para separarlo del texto */
+}
+
+.project-button:hover {
+    background-color: #c918ff; /* Color de fondo al hacer hover */
+    transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+}
+
+/*Contact section*/
+
+.contact {
+    background-color: #1F1F1F;
+    padding: 3rem 2rem;
+    display: flex; /* Cambia a flexbox */
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto dentro de los elementos */
+}
+
+.contact h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.contact p {
+    margin-bottom: 1rem; /* Añade un margen para separar los párrafos */
+}
+
+.contact a {
+    color: #c918ff; /* Cambia este color según lo que desees */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+.contact a:hover {
+    color: #BB86FC; /* Color al pasar el mouse */
+    text-decoration: underline; /* Subrayado al pasar el mouse, si lo deseas */
+}
+
+/* Skills Section */
+.skills {
+    background-color: #1F1F1F; /* Fondo oscuro para la sección */
+    padding: 3rem 2rem; /* Espaciado interno */
+    text-align: center; /* Centra el contenido */
+}
+
+.skills h2 {
+    font-size: 2rem; /* Tamaño del texto del título */
+    color: #FFFFFF; /* Color blanco para el título */
+    margin-bottom: 2rem; /* Margen inferior */
+}
+
+.skills-grid {
+    display: flex; /* Habilita flexbox para alinear los elementos */
+    justify-content: center; /* Centra los ítems horizontalmente */
+    gap: 2rem; /* Espacio entre las habilidades */
+    flex-wrap: wrap; /* Permite que los ítems se acomoden en varias líneas si es necesario */
+}
+
+.skill {
+    background-color: #242424; /* Fondo de cada tarjeta de habilidad */
+    padding: 1.5rem; /* Espaciado interno de las tarjetas */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 120px; /* Ancho de cada tarjeta */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para dar efecto de profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para hover */
+    text-align: center; /* Centra el contenido dentro de la tarjeta */
+}
+
+.skill i {
+    font-size: 3rem; /* Tamaño del icono */
+    color: #BB86FC; /* Color para los iconos */
+    margin-bottom: 1rem; /* Margen inferior para separar el icono del texto */
+}
+
+.skill p {
+    color: #E0E0E0; /* Color de texto */
+    font-size: 1.1rem; /* Tamaño de texto */
+    font-weight: bold; /* Negrita para el nombre de la habilidad */
+}
+
+.skill:hover {
+    transform: translateY(-10px); /* Efecto de desplazamiento hacia arriba en hover */
+    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6); /* Sombra más fuerte en hover */
+}
+
+/* Certifications Section */
+.certifications {
+    background-color: #1F1F1F; /* Fondo oscuro */
+    padding: 3rem 2rem; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+}
+
+.certifications h2 {
+    font-size: 2rem; /* Tamaño de fuente para el título */
+    color: #FFFFFF; /* Color blanco */
+    margin-bottom: 2rem; /* Margen inferior */
+}
+
+.certifications-grid {
+    display: flex; /* Uso de flexbox */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    gap: 2rem; /* Espaciado entre tarjetas */
+    flex-wrap: wrap; /* Permite que se acomoden en múltiples líneas */
+}
+
+.certification-card {
+    background-color: #242424; /* Fondo de cada tarjeta de certificación */
+    padding: 1.5rem; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 250px; /* Ancho de las tarjetas */
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para el efecto de profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones */
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en columna */
+    justify-content: space-between; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 300px; /* Fija la altura de las tarjetas */
+    min-height: 350px; /* Altura mínima ajustada */
+}
+
+
+.certification-badge {
+    width: 100px; /* Ajusta el tamaño del logo del certificado */
+    height: auto; /* Mantiene las proporciones */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+.certification-card h3 {
+    color: #BB86FC; /* Color del título del certificado */
+    margin-bottom: 0.5rem;
+}
+
+.certification-card p {
+    color: #E0E0E0; /* Color del texto */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+.certification-card:hover {
+    transform: translateY(-10px); /* Desplaza hacia arriba */
+    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6); /* Aumenta la sombra */
+}
+
+.certification-button {
+    display: inline-block;
+    background-color: #c918ff;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem; /* Espaciado interno */
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto; /* Asegura que el botón se empuje hacia el fondo */
+    min-height: 40px; /* Altura mínima del botón */
+}
+
+.certification-button:hover {
+    background-color: #BB86FC; /* Cambia el color de fondo al hacer hover */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+.certification-card h3, 
+.certification-card p {
+    margin: 0; /* Elimina márgenes para consistencia */
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+}
+
+
+/* Footer */
+footer {
+    background-color: #1F1F1F;
+    text-align: center;
+    padding: 2rem;
+    color: #B3B3B3;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in; /* Agrega la animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.project-card, .certification-card {
+    display: flex; /* Habilita flexbox */
+    flex-direction: column; /* Organiza los hijos en una columna */
+    justify-content: space-between; /* Distribuye el espacio entre elementos */
+    height: 300px; /* Fija la altura de las tarjetas */
+}
+
+.button-container {
+    display: flex; /* Para centrar el botón */
+    justify-content: center; /* Centra el botón horizontalmente */
+    width: 100%; /* Asegura que el contenedor del botón ocupe todo el ancho */
+}
+
+.alias-container {
+    display: inline-block; /* Para que se comporte como un bloque en línea */
+    min-width: 80px; /* Establece un ancho mínimo */
+    position: relative; /* Posicionamiento relativo */
+}
+
+.alias {
+    display: inline-block; /* Permite controlar el espacio ocupado */
+    transition: opacity 0.5s ease; /* Suaviza la transición de opacidad */
+}
+
+.hidden {
+    opacity: 0; /* Oculta el alias */
+}
+
+/* Opcional: definir estilos específicos para los alias */
+.alias-yeeiisi {
+    color: #BB86FC; /* Color para el primer alias */
+}
+
+.alias-y3iisi {
+    color: green; /* Color para el segundo alias */
+}
+
+

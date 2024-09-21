@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<!---->
+<body>
+<!--
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Proyectos</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Sobre Mí</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+-->
+
+    <section class="hero">
+        <div class="container">
+            <!-- <img src="avatar.png" alt="Foto de perfil" class="avatar"> -->
+            <h1>Hola! soy <span class="highlight">Jose Carlos</span> o... <span class="alias-container"><span id="alias" class="alias alias-yeeiisi">yeeiisi</span></span></h1>
+            <p>Estudiante de <span class="highlight">Ingeniería informática en la UGR</span> y aficionado a la <span class="highlight">ciberseguridad</span></p>
+            <div class="social-links">
+                <a href="https://github.com/yeeiisi" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/josecarlosibarrondomacia?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BS%2BM7W0EuTpKyPf82szdoDw%3D%3D" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.credly.com/users/jose-carlos-ibarrondo-macia" target="_blank"><i class="fa-solid fa-certificate"></i></a>
+                <a href="https://app.hackthebox.com/profile/#1250902" target="_blank" title="Hack The Box"><i class="fa-solid fa-cube"></i></a>
+            </div>            
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <h2>Proyectos</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Bloc de notas encriptado</h3>
+                    <p>Un bloc de notas en Python que encripta las notas al guardarlas utilizando una contraseña proporcionada por el usuario.</p>
+                    <div class="button-container">
+                        <a href="https://github.com/yeeiisi/Bloc-de-notas-encriptado.git" class="project-button">Ver en GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Calculadora Web</h3>
+                    <p>Calculadora web simple que permite realizar operaciones matemáticas básicas.</p>
+                    <div class="button-container">
+                        <a href="https://github.com/yeeiisi/HTLM-Calculator.git" class="project-button">Ver en GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Juego de la Serpiente</h3>
+                    <p>El clásico juego de la serpiente hecho en python.</p>
+                    <div class="button-container">
+                        <a href="https://github.com/yeeiisi/Snake.git" class="project-button">Ver en GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Próximo Proyecto</h3>
+                    <p>Estoy trabajando en algunas herramientas...</p>
+                    <div class="button-container">
+                    <a href="https://github.com/yeeiisi" class="project-button">Coming Soon...</a>
+                    </div>   
+                </div>             
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <div class="container">
+            <h2>Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <i class="fab fa-python"></i>
+                    <p>Python</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js-square"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-java"></i>
+                    <p>Java</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-terminal"></i>
+                    <p>Bash</p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-code"></i>
+                    <p>C++</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-cuttlefish" style="font-size: 3rem; color: #BB86FC;"></i>
+                    <p>C</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-html5" style="font-size: 3rem; color: #BB86FC;"></i>
+                    <p>HTML</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-css3-alt" style="font-size: 3rem; color: #BB86FC;"></i>
+                    <p>CSS</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-github" style="font-size: 3rem; color: #BB86FC;"></i>
+                    <p>GitHub</p>
+                </div>
+                
+                <!-- Agrega más habilidades aquí -->
+            </div>
+        </div>
+    </section>
+
+    <section class="certifications">
+        <div class="container">
+            <h2>Certificaciones</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <img src="images/it-specialist-cybersecurity.png" alt="IT Specialist - Cybersecurity" loading="lazy" class="certification-badge">
+                    <h3>IT Specialist - Cybersecurity</h3>
+                    <p>Issued by Certiport</p>
+                    <div class="button-container">
+                        <a href="https://www.credly.com/badges/aea53fba-e6e1-4582-9841-8326da262fe2/public_url" target="_blank" class="certification-button">Ver Certificado</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <img src="images/networking-basics.png" alt="Networking Basics" loading="lazy" class="certification-badge">
+                    <h3>Networking Basics</h3>
+                    <p>Issued by Cisco</p>
+                    <div class="button-container">
+                        <a href="https://www.credly.com/badges/2cdd0c3b-1cec-4434-a817-ff332a7976cf/public_url" target="_blank" class="certification-button">Ver Certificado</a>
+                    </div>
+                </div>
+                <!-- Agrega más certificaciones aquí -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Si deseas ponerte en contacto conmigo, puedes enviarme un correo a: <a href="mailto:ibarrondomaciajosecarlos[at]gmail.com">ibarrondomaciajosecarlos[at]gmail.com</a></p>
+            <p style="font-size: 0.9em; color: #888;">(Reemplaza [at] por @)</p>
+        </div>
+    </section>
+    
+    
+    <footer>
+        <p>© 2024 Jose Carlos alias Yeeiisi o Y3i$i ;) </p>
+        <p>Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
