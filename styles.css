@@ -11,16 +11,52 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    color: #E0E0E0;
-    line-height: 1.6;
+    background: 
+        linear-gradient(135deg, rgba(18, 18, 18, 0.6), rgba(31, 31, 31, 0.9)), /* Capa superior: degradado oscuro */
+        url('images/patron.webp'); /* Imagen de fondo sutil y elegante */
+    background-size: cover; /* La imagen cubrirá todo el fondo */
+    background-position: center; /* Centra la imagen en la pantalla */
+    background-attachment: fixed; /* El fondo se mantendrá fijo mientras haces scroll */
+    color: #E0E0E0; /* Color del texto */
+    line-height: 1.6; /* Mejora la legibilidad */
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Asegura que los títulos tengan más peso */
+    color: #BB86FC; /* Color destacado para títulos */
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem; /* Tamaño de texto ligeramente mayor */
+    color: #D3D3D3; /* Color de texto suave */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+a {
+    color: #03DAC6; /* Color de los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+section {
+    padding: 5rem 2rem; /* Espaciado más generoso en secciones */
+    max-width: 85%; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: rgba(31, 31, 31, 0.85); /* Fondo con transparencia para resaltar contenido */
 }
 
 /* Navigation */
 header {
-    background-color: #1F1F1F;
+    background: linear-gradient(135deg, #1A1A1A, #222); /* Degradado oscuro elegante */
     padding: 1rem 2rem;
-    border-bottom: 2px solid #03dac55d;
+    border-bottom: 2px solid #BB86FC; /* Color brillante para el borde */
 }
 
 nav ul {
@@ -73,7 +109,14 @@ nav ul li a:hover::after {
     justify-content: center;
     text-align: center;
     padding: 4rem 2rem;
-    background-color: #181818;
+    background: rgba(24, 24, 24, 0.9); /* Fondo oscuro con opacidad */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Sombra para dar profundidad */
+    color: #FFFFFF;
+}
+
+.hero h1 {
+    color: #EDEDED; /* Texto claro para destacar */
 }
 
 .hero .container {
@@ -85,11 +128,6 @@ nav ul li a:hover::after {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 1rem;
-}
-
-h1 {
-    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
@@ -115,8 +153,10 @@ h1 {
 
 /* Projects Section */
 .projects {
-    background-color: #1F1F1F;
+    background: linear-gradient(135deg, #292929, #1F1F1F); /* Degradado suave entre dos tonos oscuros */
     padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .projects .container {
@@ -139,23 +179,27 @@ h2 {
 }
 
 .project-card {
-    background-color: #242424;
+    background: linear-gradient(135deg, #242424, #1F1F1F); /* Fondo degradado suave */
     padding: 1.5rem;
     margin: 1rem;
     width: 280px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    overflow: hidden; /* Oculta el contenido que se sale */
+    text-overflow: ellipsis;
+    border: 2px solid transparent; /* Borde invisible inicialmente */
 }
 
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6);
+    border: 2px solid #BB86FC; /* Borde con color vibrante al hacer hover */
 }
 
 .project-card h3 {
-    color: #BB86FC;
+    color: #03DAC6; /* Color vibrante para los títulos */
     margin-bottom: 0.5rem;
 }
 
@@ -176,22 +220,36 @@ h2 {
 }
 
 .project-button {
-    display: inline-block; /* Para que el botón se comporte como un bloque en línea */
-    background-color: #c918ff; /* Color de fondo del botón */
-    color: #FFFFFF; /* Color del texto */
-    padding: 0.5rem 1rem; /* Espaciado interno */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    font-weight: bold; /* Texto en negrita */
-    text-decoration: none; /* Sin subrayado */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
-    margin-top: 1rem; /* Añade un margen superior para separarlo del texto */
+    display: inline-block;
+    background-color: #c918ff;
+    
+    color: #FFFFFF;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 1rem;
 }
 
 .project-button:hover {
-    background-color: #c918ff; /* Color de fondo al hacer hover */
-    transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+    background-color: #BB86FC; /* Color de fondo del botón */
+    transform: scale(1.05); /* Efecto de aumento en hover */
 }
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.icon-container i {
+    font-size: 3rem;
+    color: #BB86FC; /* Color vibrante para el icono */
+}
+
 
 /*Contact section*/
 
@@ -245,30 +303,32 @@ h2 {
 }
 
 .skill {
-    background-color: #242424; /* Fondo de cada tarjeta de habilidad */
-    padding: 1.5rem; /* Espaciado interno de las tarjetas */
-    border-radius: 8px; /* Bordes redondeados */
-    width: 120px; /* Ancho de cada tarjeta */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para dar efecto de profundidad */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones para hover */
-    text-align: center; /* Centra el contenido dentro de la tarjeta */
-}
-
-.skill i {
-    font-size: 3rem; /* Tamaño del icono */
-    color: #BB86FC; /* Color para los iconos */
-    margin-bottom: 1rem; /* Margen inferior para separar el icono del texto */
-}
-
-.skill p {
-    color: #E0E0E0; /* Color de texto */
-    font-size: 1.1rem; /* Tamaño de texto */
-    font-weight: bold; /* Negrita para el nombre de la habilidad */
+    background: linear-gradient(135deg, #242424, #1C1C1C); /* Fondo con degradado suave */
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 120px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent; /* Añadimos un borde invisible que cambia en hover */
 }
 
 .skill:hover {
-    transform: translateY(-10px); /* Efecto de desplazamiento hacia arriba en hover */
-    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6); /* Sombra más fuerte en hover */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6);
+    border: 2px solid #03DAC6; /* Borde con color brillante al hacer hover */
+}
+
+.skill i {
+    font-size: 3rem;
+    color: #BB86FC; /* Color vibrante para el ícono */
+    margin-bottom: 1rem;
+}
+
+.skill p {
+    color: #E0E0E0;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 /* Certifications Section */
@@ -292,47 +352,47 @@ h2 {
 }
 
 .certification-card {
-    background-color: #242424; /* Fondo de cada tarjeta de certificación */
-    padding: 1.5rem; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    width: 250px; /* Ancho de las tarjetas */
-    text-align: center; /* Centra el texto */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra para el efecto de profundidad */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones */
-    display: flex; /* Habilita flexbox */
-    flex-direction: column; /* Organiza los hijos en columna */
-    justify-content: space-between; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    height: 300px; /* Fija la altura de las tarjetas */
-    min-height: 350px; /* Altura mínima ajustada */
-}
-
-
-.certification-badge {
-    width: 100px; /* Ajusta el tamaño del logo del certificado */
-    height: auto; /* Mantiene las proporciones */
-    margin-bottom: 1rem; /* Espaciado inferior */
-}
-
-.certification-card h3 {
-    color: #BB86FC; /* Color del título del certificado */
-    margin-bottom: 0.5rem;
-}
-
-.certification-card p {
-    color: #E0E0E0; /* Color del texto */
-    margin-bottom: 1rem; /* Espaciado inferior */
+    background: linear-gradient(135deg, #292929, #1F1F1F); /* Degradado oscuro para las tarjetas */
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Añadido el borde */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    min-height: 350px;
+    border: 2px solid transparent; /* Añadimos un borde que cambia en hover */
 }
 
 .certification-card:hover {
-    transform: translateY(-10px); /* Desplaza hacia arriba */
-    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6); /* Aumenta la sombra */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(201, 24, 255, 0.6); /* Sombra más brillante en hover */
+    border: 2px solid #BB86FC; /* Añade borde con color destacado al pasar el ratón */
 }
+
+.certification-card h3 {
+    color: #03DAC6; /* Títulos de color vibrante */
+}
+
+.certification-card p {
+    color: #E0E0E0; /* Texto más suave */
+}
+
+.certification-badge {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
 
 .certification-button {
     display: inline-block;
     background-color: #c918ff;
-    color: #FFFFFF;
+    color: #03DAC6;
     padding: 0.5rem 1rem; /* Espaciado interno */
     border-radius: 5px;
     font-weight: bold;
@@ -414,5 +474,3 @@ h1 {
 .alias-y3iisi {
     color: green; /* Color para el segundo alias */
 }
-
-
