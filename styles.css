@@ -1,0 +1,185 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FUENTES Y FONDO */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #121212;
+    color: #E0E0E0;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* CONTENEDOR PRINCIPAL (para dar margen y sombra sutil) */
+main, header, footer {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 25px 30px;
+    box-shadow:
+        0 0 15px rgba(30, 144, 255, 0.15),
+        inset 0 0 10px rgba(255, 255, 255, 0.03);
+    margin-bottom: 30px;
+}
+
+/* ENCABEZADOS */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #1E90FF;
+    text-shadow: 0 0 8px rgba(30, 144, 255, 0.8);
+    letter-spacing: 1.2px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 25px 0 15px 0;
+    border-bottom: 3px solid #1E90FF;
+    padding-bottom: 8px;
+    color: #A0CFFF;
+    letter-spacing: 0.6px;
+}
+
+/* NAV */
+nav {
+    margin-bottom: 25px;
+}
+
+nav a {
+    color: #A0CFFF;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 18px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.05rem;
+    box-shadow: inset 0 0 0 0 #1E90FF;
+    user-select: none;
+}
+
+nav a:hover,
+nav a.active {
+    background-color: #1b456e;
+    color: #121212;
+    box-shadow: inset 200px 0 0 0 #4c5157;
+}
+
+/* LISTA DE MÁQUINAS */
+.machine-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.machine-list li {
+    background-color: #363333;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px rgba(30, 144, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.machine-list li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(40, 144, 248, 0.555);
+}
+
+.machine-list li a.machine-link {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #C0DFFF;
+    transition: color 0.3s ease;
+    flex-grow: 1;
+    word-break: break-word;
+}
+
+.machine-list li a.machine-link:hover {
+    color: #1E90FF;
+}
+
+/* Enlace oficial */
+.machine-official {
+    font-size: 0.95rem;
+    color: #1E90FF;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1.8px solid #1E90FF;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-left: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+    max-width: max-content;
+}
+
+.machine-official:hover {
+    background-color: #1E90FF;
+    color: #121212;
+    text-decoration: none;
+}
+
+/* LISTAS ORDENADAS */
+ol {
+    margin-left: 24px;
+    margin-top: 15px;
+    color: #cfdfff;
+    font-size: 1.1rem;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 18px 0;
+    color: #4b5c6b;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    user-select: none;
+}
+
+/* LINKS EN PÁGINAS WRITEUP */
+.nav-link {
+    font-size: 1rem;
+    color: #A0CFFF;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #1E90FF;
+    text-decoration: underline;
+}
+
+/* MEDIA QUERIES para responsividad */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+        max-width: 100%;
+    }
+    main, header, footer {
+        padding: 20px 15px;
+    }
+    .machine-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .machine-official {
+        margin-left: 0;
+    }
+}
