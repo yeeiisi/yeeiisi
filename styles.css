@@ -76,7 +76,7 @@ nav ul li a {
     text-decoration: none;
     color: #c918ff;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     padding: 0.5rem 0;
     transition: color 0.3s ease, transform 0.3s ease;
 }
@@ -474,6 +474,7 @@ h1 {
 .alias-y3iisi {
     color: green; /* Color para el segundo alias */
 }
+
 
 
 
